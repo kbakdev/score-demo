@@ -1,0 +1,15 @@
+name: Score Example
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: score-spec/setup-score@v2
+        with:
+          file: score-compose
+          version: '0.13.0'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: score-compose --version
