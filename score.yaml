@@ -1,0 +1,24 @@
+apiVersion: score.dev/v1b1
+metadata:
+  name: hello-world
+
+containers:
+  web:
+    image: .
+
+service:
+  ports:
+    web:
+      port: 8080
+      targetPort: 80
+
+resources:
+  example-dns:
+    type: dns
+  example-route:
+    type: route
+    params:
+      port: 8080
+      host: ${resources.example-dns.dns.host}
+      path: /
+
